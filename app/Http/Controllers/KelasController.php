@@ -29,7 +29,15 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+        'nama_kelas' => 'required|max:50',
+    ]);
+
+        Kelas::create([
+        'nama_kelas' => $request->nama_kelas
+    ]);
+
+    return redirect()->route('kelas.index');
     }
 
     /**
